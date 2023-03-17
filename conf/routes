@@ -1,0 +1,60 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                                             controllers.Login.abrirPaginaInicial()
+GET     /login                                        controllers.Login.abrirPaginaInicial()
+GET     /dashboard                                    controllers.Dashboard.abrirDashboard()
+
+#PERFIL
+GET  /perfil                                          controllers.Perfil.inicio
+POST /perfil/alterar/senha                            controllers.Perfil.alterarSenha()
+POST /perfil/salvar/dados/usuario                     controllers.Perfil.salvarDadosUsuario()
+
+#PESSOAS
+GET     /pessoas                                      controllers.Pessoas.abrirPaginaInicial()
+POST    /pessoa/salvar                                controllers.Pessoas.salvar()
+POST    /pessoas/filtrar                              controllers.Pessoas.filtrar()
+
+#GRUPO-TAREFAS
+GET   /paginaInicial                                  controllers.GruposTarefas.abrirTelaInicial()
+GET   /grupoTarefas                                   controllers.GruposTarefas.abrirGrupoTarefa()
+POST  /grupoTarefas/criar                             controllers.GruposTarefas.criarNovoGrupo()
+POST  /grupoTarefa/buscar/tudos/gruposTarefas         controllers.GruposTarefas.buscarGrupos()
+GET   /editarGrupoTarefas                             controllers.GruposTarefas.buscarGrupoTarefas()
+POST  /grupoTarefa/salva/editar                       controllers.GruposTarefas.salvarGrupoTarefa()
+POST  /grupoTarefa/buscar/tarefa                      controllers.Tarefas.buscarTarefas()
+
+#TAREFAS
+GET   /abrirNovaTarefa                                controllers.Tarefas.abrirTelaTarefa()
+GET   /adicionarTarefa                                controllers.Tarefas.adicionarTarefa()
+POST  /tarefa/salvar                                  controllers.Tarefas.salvarNovaTarefa()
+POST  /tarefa/buscar                                  controllers.Tarefas.buscarTarefa()
+GET   /editarTarefa                                   controllers.Tarefas.editarTarefa()
+POST  /tarefas/salvar/alteracoes                      controllers.Tarefas.salvarTarefa()
+POST  /tarefa/buscaId                                 controllers.Tarefas.buscarIdGrupoTarefas()
+POST  /excluir/tarefa                                 controllers.Tarefas.excluirTarefa()
+POST  /excluir/grupo/tarefa                           controllers.GruposTarefas.excluirGrupoTarefa()
+POST  /tarefa/concuida                                controllers.Tarefas.tarefaConcluida()
+POST  /tarefa/buscar/concluidas                       controllers.Tarefas.buscarTarefasConcluidas()
+
+#NovoCadastro
+GET  /acesso/registro                                 controllers.Usuarios.novoCadastro()
+POST /acesso/novoLogin                                controllers.Login.salvarDadosDoFormulario()
+
+#USUARIO-LOGIN
+POST /acesso/login                                    controllers.Login.acessoLogin()
+
+#POST
+GET    /rede-social/inicio                                        controllers.Posts.acessarPost()
+POST   /rede-social/post/salvar                                   controllers.Posts.salvar()
+POST   /rede-social/posts/publicacoes                             controllers.Posts.buscarTodos()
+POST   /rede-social/post/publicar/comentario                      controllers.Posts.salvarComentario()
+POST   /rede-social/buscar/comentarios                            controllers.Posts.buscarComentarios()
+GET    /post/imagem/:PostId                                       controllers.Posts.buscarImg(PostId: Long)
+#USUARIO
+GET   /usuarios                                       controllers.Usuarios.inicio
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

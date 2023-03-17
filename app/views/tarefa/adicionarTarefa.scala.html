@@ -1,0 +1,54 @@
+@(grupoTarefa: models.GrupoTarefa)
+@js = {
+
+    <script src="@routes.Assets.versioned("js/tarefa/tarefa.js")"></script>
+
+    <script type="text/javascript">
+            "use strict";
+
+            jQuery(document).ready(function () {
+                NovaTarefas.init(@grupoTarefa.id);
+            });
+    </script>
+}
+@css = {
+    <style>
+            button.btn.btn-success {
+                border-radius: 30px;
+            }
+
+            div#button {
+                text-align: right;
+            }
+
+            div#centralizarButaoSalvar {
+                text-align: end;
+            }
+            h5.card-title {
+                text-align: center;
+            }
+    </style>
+
+}
+@template.main("Grupo Tarefa", js, css, "") {
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <form id="formTarefa">
+                        <div class="form-group">
+                            <input type="hidden" name="id" value="@grupoTarefa.getId">
+                            <label for="tarefa">Nova Tarefa</label>
+                            <input type="text" name="tarefa" class="form-control" id="tarefa" placeholder="Insira a tarefa">
+                        </div>
+                        <button type="submit" class="btn btn-success">Salva Nova Tarefa</button>
+                    </form>
+                    <button type="button" class="btn btn-success" onclick="NovaTarefas.voltarMenu(@grupoTarefa.getId)">
+                        voltar Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}

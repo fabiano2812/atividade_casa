@@ -1,0 +1,46 @@
+@()
+@js = {
+
+    <script src="@routes.Assets.versioned("js/tarefa/grupoTarefas.js")"></script>
+
+    <script type="text/javascript">
+            "use strict";
+
+            jQuery(document).ready(function () {
+                GrupoDeTarefas.init();
+            });
+    </script>
+}
+@css = {
+}
+@template.main("Grupo Tarefas", js, css, "") {
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <form id="formGrupoTarefa">
+                        <div class="form-group">
+                            <label for="nome">Novo Grupo Tarefa</label>
+                            <input type="text" name="nome" class="form-control" placeholder="List name" id="nome">
+                        </div>
+                        <input type="color" name="cor"  id="cor" list="presetColors">
+                        <datalist  id="presetColors">
+                            <option>#ff0000</option>
+                            <option>#00ff00</option>
+                            <option>#0000ff</option>
+                        </datalist>
+                        <p>Preencha os campo com o nome da tarefa e a cor espesifica!</p>
+                        <div class="panel-footer mt-2 col-md-11">
+                            <button type="submit" class="btn btn-success">
+                                Salvar</button>
+                            <button type="button" class="btn btn-success" onclick="GrupoDeTarefas.voltar()">
+                                voltar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}

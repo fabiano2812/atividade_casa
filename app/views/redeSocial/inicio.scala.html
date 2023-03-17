@@ -1,0 +1,118 @@
+@(usuario: models.Usuario)
+@js = {
+    <script src="@routes.Assets.versioned("js/post/post.js")"></script>
+
+    <script type="text/javascript">
+            "use strict";
+
+            jQuery(document).ready(function () {
+                Post.init(@usuario.getId);
+            });
+    </script>
+}
+@css = {
+    <style>
+            .box {
+                border: 1px solid #444;
+                width: 90%;
+                margin: auto;
+            }
+
+            .box input {
+                display: inline-block;
+                outline: 0;
+                border: 0;
+                padding: 5px;
+            }
+
+            .box .button {
+                background: #090101;
+                color: #fff;
+                font-weight: bold;
+                border: none;
+                float: right;
+                padding: 5px 10px;
+            }
+
+            .card-title {
+                color: #000000;
+                margin-top: 1px;
+            }
+
+            .card {
+                border-color: #0049f3;
+                border-radius: 29px;
+            }
+
+            h6#respostaComentarios {
+                text-align: center;
+            }
+            div#divBusca {
+                margin-top: 17px;
+                display: flex!important;
+            }
+            button#btn-inicio {
+                margin-right: 102px;
+                height: 40px;
+                width: 190px;
+            }
+    </style>
+
+}
+@template.main("Post", js, css, "menu-dashboard") {
+    <div id="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card info-card customers-card">
+                    <div class="card-body">
+                        <form id="formEditarFormulario">
+                            <h5 class="card-title"><i class="bi bi-caret-right-fill"></i> Publicação <span>
+                                | Posts</span></h5>
+                            <div class="form-group">
+                                <i class="bi bi-people"></i>
+                                <label for="titulo">Adicionar Titulo</label>
+                                <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Ola @usuario.getNome, no que voce esta pensando?">
+                            </div>
+                            <div class="form-group">
+                                <i class="bi bi-chat-left-dots-fill"></i>
+                                <label for="descricao">Adicionar Descrição</label>
+                                <textarea type="text" name="descricao" class="form-control" id="descricao" rows="5" cols="33"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="file" name="anexos">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer mt-2 col-md-11">
+                                <button type="submit" class="btn btn-success">Publicar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                   <div class="card info-card customers-card">
+                       <div class="card-body">
+                           <form id="formPesquisarPublicacao">
+                               <h5 class="title mt-2">Pesquisa</h5>
+                               <div id="divBusca" class="displa-flex" >
+                                   <input type="text" name="tituloPesquisa" class="form-control" id="input-pesquisa" placeholder="Pesquisar publicação">
+                                   <button type="submit" class="btn btn-success">Pesquisar</button>
+                               </div>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="gerar_postPublicadas"></div>
+        </div>
+    </div>
+    <button type="button" id="btn-inicio" class="btn btn-success mt-2 justify-content-center align-items-center" onclick="Post.voltarInicio()">Voltar Pagina Inicial</button>
+}

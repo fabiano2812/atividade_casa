@@ -1,0 +1,63 @@
+@()
+@js = {
+
+    <script src="@routes.Assets.versioned("js/tarefa/grupoTarefas.js")"></script>
+
+    <script type="text/javascript">
+            "use strict";
+
+            jQuery(document).ready(function () {
+                GrupoDeTarefas.init();
+            });
+    </script>
+}
+@css = {
+    <style>
+            button.btn.btn-success {
+                border-radius: 30px;
+            }
+
+            div#button {
+                text-align: right;
+            }
+
+            div#centralizarButaoSalvar {
+                text-align: end;
+            }
+            h5.card-title {
+                margin-left: 13px
+            }
+            .circulo {
+                border: 2px solid black;
+                border-radius: 55px;
+                width: 32px;
+                height: 33px;
+            }
+            .teste {
+                display: flex;
+                margin-top: 8px;
+            }
+            h6#centralizarTarefa {
+                text-align: center;
+            }
+    </style>
+
+}
+@template.main("Grupo Tarefa", js, css, "t") {
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <div id="button">
+                        <div class="container">
+                            <div id="gerar_grupotarefa"></div>
+                        </div>
+                        <button type="button" id="novaTabela" onclick="GrupoDeTarefas.adicionarGrupoTarefa()" class="btn btn-success">Cadastrar novo Grupo Tarefa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}

@@ -1,0 +1,40 @@
+@(tarefa: models.Tarefa)
+@js = {
+
+    <script src="@routes.Assets.versioned("js/tarefa/tarefaEditar.js")"></script>
+
+    <script type="text/javascript">
+            "use strict";
+
+            jQuery(document).ready(function () {
+                TarefaEditar.init();
+            });
+    </script>
+}
+@css = {
+
+}
+@template.main("Tarefa", js, css, "") {
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <form id="formEditarFormularioGeral">
+                        <input type="hidden" name="id" value="@tarefa.getId">
+                        <div class="form-group">
+                            <label for="tarefaDescricao">Editar Tarefa</label>
+                            <input type="text" name="tarefaDescricao" class="form-control" id="tarefaDescricao" value="@tarefa.getDescricao">
+                        </div>
+                        <div class="panel-footer mt-2 col-md-11">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <button type="button" class="btn btn-success" onclick="TarefaEditar.voltar(@tarefa.getId)">
+                                voltar</button>
+                            <button type="button" class="btn btn-success" onclick="TarefaEditar.excluir(@tarefa.getId)">
+                                Excluir</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}

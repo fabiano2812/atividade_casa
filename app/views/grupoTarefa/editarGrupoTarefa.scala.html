@@ -1,0 +1,46 @@
+@(grupoTarefa: models.GrupoTarefa)
+@js = {
+
+    <script src="@routes.Assets.versioned("js/tarefa/grupoTarefas.js")"></script>
+
+    <script type="text/javascript">
+            "use strict";
+
+            jQuery(document).ready(function () {
+                GrupoDeTarefas.init();
+            });
+    </script>
+}
+@css = {
+
+}
+@template.main(" Tarefa", js, css,"") {
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <form id="formEditarEditarGrupoTarefas">
+                        <input type="hidden" name="id" value="@grupoTarefa.getId">
+                        <div class="form-group">
+                            <label for="GrupoDescricao">Editar Tarefa</label>
+                            <input type="text" name="GrupoDescricao" class="form-control" id="GrupoDescricao" value="@grupoTarefa.getDescricao">
+                        </div>
+                        <input type="color" name="cor"  id="cor" list="presetColors" value="@grupoTarefa.getCor">
+                        <datalist  id="presetColors">
+                            <option>#ff0000</option>
+                            <option>#00ff00</option>
+                            <option>#0000ff</option>
+                        </datalist>
+                        <div class="panel-footer mt-2 col-md-11">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <button type="button" class="btn btn-success" onclick="GrupoDeTarefas.voltar()">
+                                voltar</button>
+                            <button type="button" class="btn btn-success" onclick="GrupoDeTarefas.excluirGrupoTarfa(@grupoTarefa.getId)">
+                                Excluir</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}

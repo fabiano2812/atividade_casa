@@ -1,0 +1,124 @@
+@(grupoTarefa: models.GrupoTarefa)
+@js = {
+    <script src="@routes.Assets.versioned("js/tarefa/tarefa.js")"></script>
+
+    <script type="text/javascript">
+            "use strict";
+
+            jQuery(document).ready(function () {
+                NovaTarefas.init(@grupoTarefa.getId);
+            });
+    </script>
+}
+
+@css = {
+    <style>
+            button.btn.btn-success {
+                border-radius: 30px;
+                margin-top: 50%;
+            }
+
+            div#button {
+                text-align: right;
+            }
+
+            div#centralizarButaoSalvar {
+                text-align: end;
+            }
+
+            h5.card-title {
+                text-align: center;
+            }
+
+            .circulo {
+                border: 2px solid black;
+                border-radius: 55px;
+                width: 32px;
+                height: 33px;
+                margin-top: 15px;
+            }
+
+            .teste {
+                display: flex;
+                margin-top: 8px;
+            }
+
+            h2#teste {
+                margin-left: 13px;
+                margin-top: 12px;
+            }
+
+            a#teste {
+                margin-left: 19px;
+                font-size: 30px;
+                margin-top: 4px;
+            }
+
+            .card.grupo-tarefa-card {
+                margin-left: 36px;
+            }
+
+            input[type="checkbox"] {
+                display: flex;
+
+            }
+            h3 {
+                text-align: center;
+            }
+            input[type="checkbox"] {
+                display: flex;
+                margin-top: 25px;
+            }
+    </style>
+}
+
+@template.main("Tarefas", js, css, "e") {
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <form id="formTarefa">
+                        <div id="button">
+                            <div class="container">
+                                <div class="ola md-12">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="teste">
+                                                <div class="circulo" style="background-color:@grupoTarefa.getCor"></div>
+                                                <a href="http://localhost:9000/editarGrupoTarefas?grupoTarefa=@grupoTarefa.getId" id="teste">@grupoTarefa.getDescricao</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <input type="hidden" name="id" value="@grupoTarefa.getId">
+                                            <div id="gerar_tarefasPublicadas"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card-body">
+                                            <div class="card-body">
+                                                <h3>Tarefa Concluida</h3><hr>
+                                                <div id="gerar_tarefasConcluido"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-success" onclick="NovaTarefas.criarTarefa(@grupoTarefa.getId)">
+                                Adicionar Tarefa</button>
+                            <button type="button" class="btn btn-success" onclick="NovaTarefas.voltar(@grupoTarefa.getId)">
+                                voltar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
